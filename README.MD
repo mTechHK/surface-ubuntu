@@ -1,11 +1,11 @@
-#聲明
+### 聲明
 這個專案的代碼來自 [jakeday/linux-surface](https://github.com/jakeday/linux-surface)， 本人只是漢化本專案！
 
-＃Linux Surface
+### Linux Surface
 
 在Microsoft Surface設備上運行的Linux。請按照以下說明安裝最新的內核和配置文件。
 
-＃ 注意
+### 注意
 
 只是對那些感興趣的人有所了解。我不得不從稍微暫停這個項目中，但是計劃中有很多大事，這個項目很快就會再次活躍起來！！
 
@@ -54,7 +54,7 @@
 ###免責聲明
 *在大多數情況下，事物都是在Surface Book上測試的。雖然據說大多數事情在其他設備上都可以正常使用，但您的行駛里程可能會有所不同。請查看問題列表以了解可能的例外情況。
 
-###下載預建內核和標題
+### 下載預建內核
 
 以下說明中的setup.sh腳本將為您處理下載。否則，您仍然可以直接下載它們（不建議這樣做，因為您將要運行setup.sh腳本）。
 
@@ -91,9 +91,9 @@
   sudo dpkg -i linux-headers-[VERSION].deb linux-image-[VERSION].deb linux-libc-dev-[VERSION].deb
   ```
   
-###從源代碼編譯內核
+### 從源代碼編譯內核
 
-####對於基於Debian的系統
+#### 對於基於Debian的系統
 
 如果您不想使用預構建的內核和驅動， 則可以按照以下步驟自己編譯內核：
 
@@ -101,55 +101,61 @@
   ```
   sudo apt install build-essential binutils-dev libncurses5-dev libssl-dev ccache bison flex libelf-dev
   ```
-1. Clone the mainline stable kernel repo:
+1. 複製穩定內核:
   ```
   git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git ~/linux-stable
   ```
-2. Go into the linux-stable directory:
+  
+2. 進入linux-stable目錄:
   ```
   cd ~/linux-stable
   ```
-3. Checkout the version of the kernel you wish to target (replacing with your target version):
+  
+3. 檢查您要定位的內核版本（替換為目標版本）:
   ```
   git checkout v5.y.z
   ```
-4. Apply the kernel patches from the linux-surface repo (this one, and assuming you cloned it to ~/linux-surface):
+  
+4. 應用linux-surface存儲庫中的內核補丁（這一步，並假設您將其克隆到〜/ linux-surface中）:
   ```
   for i in ~/linux-surface/patches/[VERSION]/*.patch; do patch -p1 < $i; done
   ```
-5. Use config for kernel series (may need to manually change for your distro):
+  
+5. 將配置用於內核系列（可能需要手動更改發行版）:
   ```
   cp ~/linux-surface/configs/[VERSION]/config .config
   ```
-6. Compile the kernel and headers (for ubuntu, refer to the build guide for your distro):
+  
+6. 編譯內核和頭文件（對於ubuntu，請參閱發行版的構建指南）:
   ```
   make -j `getconf _NPROCESSORS_ONLN` deb-pkg LOCALVERSION=-linux-surface
   ```
-7. Install the headers, kernel and libc-dev:
+  
+7. 安裝headers，內核和libc-dev:
   ```
   sudo dpkg -i linux-headers-[VERSION].deb linux-image-[VERSION].deb linux-libc-dev-[VERSION].deb
   ```
 
-#### For Arch-Based Systems
+#### 對於Arch-Based的系統
 
-Have a look at [this](https://github.com/dmhacker/arch-linux-surface) repository.
+請看[這裡] (https://github.com/dmhacker/arch-linux-surface)
 
-### Signing the kernel for Secure Boot
+### 簽名內核以進行安全啟動
 
-Please consult the [SIGNING.md](SIGNING.md).
+請查看 [SIGNING.md](SIGNING.md).
 
-### NOTES
+### 注意
 
-* If you are getting stuck at boot when loading the ramdisk, you need to install the Processor Microcode Firmware for Intel CPUs (usually found under Additional Drivers in Software and Updates).
-* Do not install TLP! It can cause slowdowns, laggy performance, and occasional hangs! You have been warned.
-* If you chose to use hibernate over suspend, please follow the instructions [here](https://fitzcarraldoblog.wordpress.com/2018/07/14/configuring-lubuntu-18-04-to-enable-hibernation-using-a-swap-file/).
+*如果加載ramdisk時卡住了啟動時間，則需要安裝用於Intel CPU的處理器微代碼固件（通常在“軟件和更新”中的“其他驅動程序”下找到）。
+*不要安裝TLP！它可能會導致速度變慢，性能下降以及偶爾掛起！你被警告了。
+*如果您選擇在暫停時使用休眠模式，請按照[此處]的說明進行操作（https://fitzcarraldoblog.wordpress.com/2018/07/14/configuring-lubuntu-18-04-to-enable-hibernation-using-a-swap-file/）。
 
-### Support
+### 支持
 
-If you have an issue with the kernel, please feel free to create on issue here to track it. If you have questions or need support, please use our [Gitter Community](https://gitter.im/linux-surface)!
+如果您對內核有疑問，請隨時在此處創建有問題的跟踪它。如果您有疑問或需要支持，請使用我們的[Gitter社區]（https://gitter.im/linux-surface）！
 
-### Donations Appreciated!
+### 捐款給原作者！
 
 PayPal: https://www.paypal.me/jakeday42
 
-Bitcoin: 1AH7ByeJBjMoAwsgi9oeNvVLmZHvGoQg68
+比特幣: 1AH7ByeJBjMoAwsgi9oeNvVLmZHvGoQg68
