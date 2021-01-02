@@ -1,30 +1,29 @@
-# Signing a custom kernel for Secure Boot
+### 簽名自定義內核以進行安全啟動
 
-Instructions are for ubuntu, but should work similar for other distros, if they are using shim
-and grub as bootloader. If your distro is not using shim (e.g. Linux Foundation Preloader), there
-should be similar steps to complete the signing (e.g. HashTool instead of MokUtil for LF Preloader)
-or you can install shim to use instead. The ubuntu package for shim is called `shim-signed`, but
-please inform yourself on how to install it correctly, so you do not mess up your bootloader.
+這一則說明是針對ubuntu的，但如果其他版本使用的是shim，則說明應該類似
+和grub作為引導程序。如果您的發行版未使用填充程序（例如Linux Foundation Preloader），
+應該以相似的步驟完成簽名（例如，對於LF Preloader，使用HashTool代替MokUtil）
+或者您可以安裝補丁以代替使用。 shim的ubuntu軟件包稱為“ shim-signed”，但
+請告知自己如何正確安裝它，以免弄亂引導加載程序。
 
-Since the most recent GRUB2 update (2.02+dfsg1-5ubuntu1) in Ubuntu, GRUB2 does not load unsigned
-kernels anymore, as long as Secure Boot is enabled. Users of Ubuntu 18.04 will be notified during
-upgrade of the grub-efi package, that this kernel is not signed and the upgrade will abort.
+由於Ubuntu中的最新GRUB2更新（2.02 + dfsg1-5ubuntu1），GRUB2不會加載未簽名的文件
+只要啟用了安全啟動，內核就不再可用。 Ubuntu 18.04的用戶將在以下期間收到通知
+升級grub-efi軟件包，表明該內核未簽名，升級將中止。
 
-Thus you have three options to solve this problem:
+因此，您有三種選擇來解決此問題：
 
-1. You sign the kernel yourself.
-2. You use a signed, generic kernel of your distro.
-3. You disable Secure Boot.
+1.自己簽名內核。
+2.使用發行版的簽名的通用內核。
+3.禁用安全啟動。
 
-Since option two and three are not really viable, these are the steps to sign the kernel yourself.
+由於選項2和3並不是真正可行，因此這些是您自己簽名內核的步驟。
 
-Instructions adapted from [the Ubuntu Blog](https://blog.ubuntu.com/2017/08/11/how-to-sign-things-for-secure-boot).
-Before following, please backup your /boot/EFI directory, so you can restore everything. Follow
-these steps on your own risk.
+從[Ubuntu博客]（https://blog.ubuntu.com/2017/08/11/how-to-sign-things-for-secure-boot）改編的說明。
+在執行以下操作之前，請備份您的/ boot / EFI目錄，以便您可以還原所有內容。跟隨這些步驟需要您自擔風險。
 
 1. Create the config to create the signing key, save as mokconfig.cnf:
 ```
-# This definition stops the following lines failing if HOME isn't
+# 如果沒有HOME資料夾，此定義將阻止以下行執行
 # defined.
 HOME                    = .
 RANDFILE                = $ENV::HOME/.rnd 
@@ -49,9 +48,9 @@ basicConstraints        = critical,CA:FALSE
 extendedKeyUsage        = codeSigning,1.3.6.1.4.1.311.10.3.6
 nsComment               = "OpenSSL Generated Certificate"
 ```
-Adjust all parts with <YOUR*> to your details.
+請根據您的需求更改以上配置！
 
-2. Create the public and private key for signing the kernel:
+2. 創建用於簽名內核的公鑰和私鑰：
 ```
 openssl req -config ./mokconfig.cnf \
         -new -x509 -newkey rsa:2048 \
@@ -60,50 +59,50 @@ openssl req -config ./mokconfig.cnf \
         -out "MOK.der"
 ```
 
-3. Convert the key also to PEM format (mokutil needs DER, sbsign needs PEM):
+3. 還將密鑰也轉換為PEM格式（mokutil需要DER，sbsign需要PEM）：
 ```
 openssl x509 -in MOK.der -inform DER -outform PEM -out MOK.pem
 ```
 
-4. Enroll the key to your shim installation:
+4. 將密鑰註冊到補丁安裝中：
 ```
 sudo mokutil --import MOK.der
 ```
-You will be asked for a password, you will just use it to confirm your key selection in the
-next step, so choose any.
+系統會要求您輸入密碼，只需使用它來確認您在[
+下一步，所以選擇任何一個。
 
-5. Restart your system. You will encounter a blue screen of a tool called MOKManager.
-Select "Enroll MOK" and then "View key". Make sure it is your key you created in step 2.
-Afterwards continue the process and you must enter the password which you provided in
-step 4. Continue with booting your system.
+5.重新啟動系統。您將遇到一個名為MOKManager的工具的藍屏。
+選擇“Enroll MOK”，然後選擇“View key”。確保它是您在步驟2中創建的密鑰。
+然後繼續該過程，您必須輸入您提供的密碼
+步驟4.繼續引導系統。
 
-6. Verify your key is enrolled via:
+6. 通過以下方式驗證您的密鑰是否已註冊：
 ```
 sudo mokutil --list-enrolled
 ```
 
-7. Sign your installed kernel (it should be at /boot/vmlinuz-[KERNEL-VERSION]-surface-linux-surface):
+7. 對已安裝的內核進行簽名（應位於/ boot / vmlinuz- [KERNEL-VERSION] -surface-linux-surface）：
 ```
 sudo sbsign --key MOK.priv --cert MOK.pem /boot/vmlinuz-[KERNEL-VERSION]-surface-linux-surface --output /boot/vmlinuz-[KERNEL-VERSION]-surface-linux-surface.signed
 ```
 
-8. Copy the initram of the unsigned kernel, so we also have an initram for the signed one.
+8. 複製未簽名內核的initram，因此我們也為已簽名內核提供了一個initram。
 ```
 sudo cp /boot/initrd.img-[KERNEL-VERSION]-surface-linux-surface{,.signed}
 ```
 
-9. Update your grub-config
+9. 更新您的grub-config
 ```
 sudo update-grub
 ```
 
-10. Reboot your system and select the signed kernel. If booting works, you can remove the unsigned kernel:
+10. 重新引導系統，然後選擇已簽名的內核。如果啟動有效，則可以刪除未簽名的內核：
 ```
 sudo mv /boot/vmlinuz-[KERNEL-VERSION]-surface-linux-surface{.signed,}
 sudo mv /boot/initrd.img-[KERNEL-VERSION]-surface-linux-surface{.signed,}
 sudo update-grub
 ```
 
-Now your system should run under a signed kernel and upgrading GRUB2 works again. If you want
-to upgrade the custom kernel, you can sign the new version easily by following above steps
-again from step seven on. Thus BACKUP the MOK-keys (MOK.der, MOK.pem, MOK.priv).
+現在，您的系統應該在已簽名的內核下運行，並且升級GRUB2可以再次進行。如果你想
+要升級自定義內核，您可以按照上述步驟輕鬆簽署新版本
+從第七步開始。因此，備份MOK鍵（MOK.der，MOK.pem，MOK.priv）。
