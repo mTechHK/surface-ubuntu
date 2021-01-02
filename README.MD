@@ -1,6 +1,3 @@
-### 聲明
-這個專案的代碼來自 [jakeday/linux-surface](https://github.com/jakeday/linux-surface)， 本人只是漢化本專案！
-
 ### Linux Surface
 
 在Microsoft Surface設備上運行的Linux。請按照以下說明安裝最新的內核和配置文件。
