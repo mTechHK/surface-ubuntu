@@ -54,8 +54,6 @@
 
 以下說明中的setup.sh腳本將為您處理下載。否則，您仍然可以直接下載它們（不建議這樣做，因為您將要運行setup.sh腳本）。
 
-基於ubuntu發行版的下載（其他發行版將需要使用隨附的補丁從源代碼進行編譯） : https://github.com/jakeday/linux-surface/releases
-
 您將需要下載要安裝的版本的映像，標頭和libc-dev deb文件。
 
 ### 步驟
@@ -68,7 +66,7 @@
   
 1. 複製h這個專案到你的電腦:
   ```
-   git clone --depth 1 https://github.com/jakeday/linux-surface.git ~/linux-surface
+   git clone --depth 1 https://github.com/miracl-cutelemon173/surface-ubuntu/blob/main/README.MD
   ```
   
 2. 進入這個專案的路徑:
@@ -132,10 +130,6 @@
   sudo dpkg -i linux-headers-[VERSION].deb linux-image-[VERSION].deb linux-libc-dev-[VERSION].deb
   ```
 
-#### 對於Arch-Based的系統
-
-請看[這裡] (https://github.com/dmhacker/arch-linux-surface)
-
 ### 簽名內核以進行安全啟動
 
 請查看 [SIGNING.md](SIGNING.md).
@@ -143,7 +137,7 @@
 ### 注意
 
 *如果加載ramdisk時卡住了啟動時間，則需要安裝用於Intel CPU的處理器微代碼固件（通常在“軟件和更新”中的“其他驅動程序”下找到）。
-*不要安裝TLP！它可能會導致速度變慢，性能下降以及偶爾掛起！你被警告了。
+*不要安裝TLP！它可能會導致速度變慢，性能下降以及偶爾掛起！
 *如果您選擇在暫停時使用休眠模式，請按照[此處]的說明進行操作（https://fitzcarraldoblog.wordpress.com/2018/07/14/configuring-lubuntu-18-04-to-enable-hibernation-using-a-swap-file/）。
 
 ### 支持
