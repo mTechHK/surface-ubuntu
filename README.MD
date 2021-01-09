@@ -136,16 +136,6 @@
 
 ### 注意
 
-*如果加載ramdisk時卡住了啟動時間，則需要安裝用於Intel CPU的處理器微代碼固件（通常在“軟件和更新”中的“其他驅動程序”下找到）。
+*如果加載ramdisk時卡住了，則需要安裝用於Intel CPU的處理器微代碼固件（通常在“軟件和更新”中的“其他驅動程序”下找到）。
 *不要安裝TLP！它可能會導致速度變慢，性能下降以及偶爾掛起！
 *如果您選擇在暫停時使用休眠模式，請按照[此處]的說明進行操作（https://fitzcarraldoblog.wordpress.com/2018/07/14/configuring-lubuntu-18-04-to-enable-hibernation-using-a-swap-file/）。
-
-### 支持
-
-如果您對內核有疑問，請隨時在此處創建有問題的跟踪它。如果您有疑問或需要支持，請使用我們的[Gitter社區]（https://gitter.im/linux-surface）！
-
-### 捐款給原作者！
-
-PayPal: https://www.paypal.me/jakeday42
-
-比特幣: 1AH7ByeJBjMoAwsgi9oeNvVLmZHvGoQg68
