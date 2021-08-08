@@ -29,7 +29,7 @@
 * 無線上網
 * 藍牙
 * 電源按鈕
-*音量按鈕
+* 音量按鈕
 * SD卡讀卡器
 * 攝像頭（部分支持，暫時禁用）
 * 休眠
@@ -43,12 +43,12 @@
 
 ### 沒辦法運作的配件
 
-* 專用的Nvidia 顯卡（除非您具有基於Surface Book 1 ，那麽板載Nvidia 就可以正常工作）
+* 專用的Nvidia 顯卡（除非您的Surface型號為Surface Book 1 ，否則板載Nvidia 顯卡理論上都可以可以正常工作）
 * 相機（尚不完全支持）
 * 尚不支持Connected Standby
 
-###免責聲明
-* 在大多數情況下，本程序都是在Surface Book上測試的。雖然據說大多數事情在其他設備上都可以正常使用，但您的運行過程可能會有所不同。請查看問題列表以了解可能的例外情況。
+### 免責聲明
+* 在大多數情況下，本程序都是在Surface Book上測試的。雖然在大多數情況下，其他設備上也可以正常使用，但您的運行過程可能會有所不同。請查看問題列表以了解可能的例外情況。
 
 ### 下載預建內核
 
@@ -92,7 +92,7 @@
 
 如果您不想使用預構建的內核和驅動， 則可以按照以下步驟自己編譯內核：
 
-0. (Prep) Install the required packages for compiling the kernel:
+0. (準備) 安裝內核的依賴項:
   ```
   sudo apt install build-essential binutils-dev libncurses5-dev libssl-dev ccache bison flex libelf-dev
   ```
