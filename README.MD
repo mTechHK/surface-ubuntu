@@ -58,20 +58,19 @@
 
 ### 步驟
 
-0. (準備) 安裝必要項:
-  使用指令
+0. (準備) 安裝必要項, 使用指令:
   ```
    sudo apt install git curl wget sed
   ```
   
-1. 複製h這個專案到你的電腦:
+1. 複製這個專案到你的電腦:
   ```
    git clone https://github.com/ItzMiracleOwO/surface-ubuntu
   ```
   
 2. 進入這個專案的路徑:
   ```
-   cd ~/linux-surface
+   cd linux-surface
   ```
   
 3. 使用指令:
@@ -79,10 +78,12 @@
    sudo sh setup.sh
   ```
 
+### 如果您想自行安裝内核 請遵循以下步驟進行 但如果您只想安裝最新内核 您可以忽略下方内容
+
 安裝腳本將為您處理安裝最新內核。您還可以選擇下載所需的任何版本並自行安裝：
 安裝標頭，內核和libc-dev（請確保首先將進入(cd)到下載位置）：
   ```
-  sudo dpkg -i linux-headers-[VERSION].deb linux-image-[VERSION].deb linux-libc-dev-[VERSION].deb
+  sudo dpkg -i linux-headers-[版本].deb linux-image-[版本].deb linux-libc-dev-[版本].deb
   ```
   
 ### 從源代碼編譯內核
