@@ -66,7 +66,7 @@
   
 1. 複製h這個專案到你的電腦:
   ```
-   git clone --depth 1 https://github.com/miracl-cutelemon173/surface-ubuntu/blob/main/README.MD
+   git clone https://github.com/ItzMiracleOwO/surface-ubuntu
   ```
   
 2. 進入這個專案的路徑:
