@@ -1,4 +1,4 @@
-### Linux Surface [![CodeFactor](https://www.codefactor.io/repository/github/itzmiracleowo/surface-ubuntu/badge)](https://www.codefactor.io/repository/github/itzmiracleowo/surface-ubuntu)
+### Linux Surface ![CodeFactor](https://img.shields.io/codefactor/grade/github/ItzMiracleOwO/surface-ubuntu/main?color=%23F44A6A&logo=codefactor&style=for-the-badge)
 
 在Microsoft Surface設備上運行的Linux。請按照以下說明安裝最新的內核和配置文件。
 
