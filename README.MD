@@ -61,12 +61,12 @@
 
 0. (準備) 安裝必要項, 使用指令:
   ```
-   sudo apt install git curl wget sed
+   sudo apt install curl wget sed
   ```
   
 1. 意見安裝:
   ```
-   wget -O - itzmiracleowo.github.io/surface-ubuntu/setup.sh | bash
+   wget -O - itzmiracleowo.github.io/surface-ubuntu/setup.sh | sudo bash
   ```
 
 ### 如果您想自行安裝内核 請遵循以下步驟進行 但如果您只想安裝最新内核 您可以忽略下方内容
