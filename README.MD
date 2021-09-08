@@ -64,19 +64,9 @@
    sudo apt install git curl wget sed
   ```
   
-1. 複製這個專案到你的電腦:
+1. 意見安裝:
   ```
-   git clone https://github.com/ItzMiracleOwO/surface-ubuntu
-  ```
-  
-2. 進入這個專案的路徑:
-  ```
-   cd linux-surface
-  ```
-  
-3. 使用指令:
-  ```
-   sudo sh setup.sh
+   wget -O - itzmiracleowo.github.io/surface-ubuntu/setup.sh | bash
   ```
 
 ### 如果您想自行安裝内核 請遵循以下步驟進行 但如果您只想安裝最新内核 您可以忽略下方内容
