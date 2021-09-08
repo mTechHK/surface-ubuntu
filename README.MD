@@ -1,6 +1,6 @@
-### Surface Ubuntu  
-![CodeFactor](https://img.shields.io/codefactor/grade/github/ItzMiracleOwO/surface-ubuntu/main?color=%23F44A6A&logo=codefactor&style=for-the-badge) ![shell](https://img.shields.io/badge/shell-orange?style=for-the-badge&logo=sh)
-
+### Surface-Ubuntu
+> [![5urfac3_Ubuntu](https://github-readme-stats.vercel.app/api/pin/?username=ItzMiracleOwO&repo=surface-ubuntu&show_icons=true&bg_color=23272A&title_color=FF73F1&text_color=FFC0CB&icon_color=9B84EE&count_private=true&border_color=fAA61A&border_radius=10)](https://github.com/mTechHK/surface-ubuntu)  
+> ![CodeFactor](https://img.shields.io/codefactor/grade/github/ItzMiracleOwO/surface-ubuntu/main?color=%23F44A6A&logo=codefactor&style=for-the-badge) ![codeL](https://img.shields.io/tokei/lines/github/ItzMiracleOwO/surface-ubuntu?style=for-the-badge) ![commit](https://img.shields.io/github/last-commit/ItzMiracleOwO/surface-ubuntu?color=%23181717&logo=GitHub&style=for-the-badge) ![shell](https://img.shields.io/badge/shell-orange?style=for-the-badge&logo=sh)
 在Microsoft Surface設備上運行的Linux。請按照以下說明安裝最新的內核和配置文件。
 
 ### 注意
