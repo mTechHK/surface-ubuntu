@@ -119,7 +119,7 @@
   
 7. 安裝headers，內核和libc-dev:
   ```
-  sudo dpkg -i linux-headers-[VERSION].deb linux-image-[VERSION].deb linux-libc-dev-[VERSION].deb
+  sudo dpkg -i linux-headers-[版本].deb linux-image-[版本].deb linux-libc-dev-[版本].deb
   ```
 
 ### 簽名內核以進行安全啟動
